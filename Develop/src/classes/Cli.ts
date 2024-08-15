@@ -178,7 +178,7 @@ class Cli {
         // TODO: push the truck to the vehicles array
         // TODO: set the selectedVehicleVin to the vin of the truck
         // TODO: perform actions on the truck
-        const truck = new Truck (
+        const truck = new Truck(
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -392,19 +392,20 @@ class Cli {
             }
           }
         } else if (answers.action === 'Tow a vehicle') {
-          for (let i = 0, i , this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.findVehicleToTow(this.selectedVehicle));
-        } else {
-          console.log('Only trucks can tow vehicles.');
-          this.performActions();
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.selectedVehicle instanceof Truck) {
+              return (this.findVehicleToTow(this.selectedVehicle))
+            } else {
+              console.log('Only trucks can tow vehicles.');
+              this.performActions();
+            }
           }
-          return;
         } else if (answers.action === 'Perfom a wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.selectedVehicle instead of Motorbike){
-            this.selectedVehicleVin.perfomWheelie();
-          } else {
-            console.log('Only motorbikes can perfom a wheelie');
+            if (this.selectedVehicle instanceof Motorbike) {
+              this.selectedVehicleVin.perfomWheelie();
+            } else {
+              console.log('Only motorbikes can perfom a wheelie');
             }
           }
         }
